@@ -19,6 +19,7 @@ class CreateMessagesTable extends Migration
             $table->string('sender_id');
             $table->text('message_body');
             $table->string('recipients');
+            $table->boolean('confirmed')->default(false);
             $table->dateTime('schedule_time');
             $table->timestamps();
 

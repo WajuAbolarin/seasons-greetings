@@ -11,15 +11,14 @@
 |
 */
 
-Route::get('/da', function () {
+Auth::routes();
 
-   $client = new GuzzleHttp\Client();
-
-
-   $url ='https://www.bulksmsnigeria.com/api/v1/sms/create?api_token='.config('sms.token'). '&from=SGREETINGS&to=07056576921,08147966847,08146277962&body=Wishing you a merry Christmas from seasonsgreet.i.ng';
-//    $reponse = $client->post($url);
-//    dd(json_encode($reponse->getBody()), $reponse->getStatusCode());
-});
 Route::view('/', 'welcome');
 
-Route::resource('messages', 'MessageController');
+Route::resource('messages', 'MessageController')->middleware('auth');
+
+Route::get('{user}/messages/confirm/{message?}', 'MessageConfirmationController@create')->name('message.confirm')->middleware('auth');
+
+Route::post('messages/confirm', 'MessageConfirmationController@store')->name('message.confirm.store')->middleware('auth');
+
+Route::get('/home', 'HomeController@index')->name('home');

@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Validator;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -13,7 +14,12 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        Validator::extend('array of phone numbers', function($attr, $value, $parameters){
+            foreach ($value as $v) {
+                $length = strlen($v);
+                return $length>= 11 && $length <= 15;
+            }
+        });
     }
 
     /**

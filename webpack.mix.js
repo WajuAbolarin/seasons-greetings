@@ -15,4 +15,5 @@ mix.js('resources/js/app.js', 'public/js/app.js')
     .extract(['vue'])
     .sourceMaps()
    .styles(['resources/css/lumen.css', 'resources/css/app.css'], 'public/css/app.css')
-   .browserSync('seasongreetings.test')
+
+   .browserSync('https://seasongreetings.test')

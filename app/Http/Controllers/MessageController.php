@@ -4,9 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Message;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 
 class MessageController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -24,7 +30,8 @@ class MessageController extends Controller
      */
     public function create()
     {
-        //
+
+        return view('messaging.create')->with('active', 'messages');
     }
 
     /**
@@ -35,14 +42,29 @@ class MessageController extends Controller
      */
     public function store(Request $request)
     {
+        //validate the message
+        $validedata = $request->validate([
+            'sender_id' => 'required|max:11',
+            'recipients' => 'required|array of phone numbers'
+        ]);
+
+
+        //check users Account balance and what it will cost to send the message
+
+
+        //create the message record
         $message = Message::create([
             'sender'        => $request->user()->id,
             'sender_id'     => $request->sender_id,
             'message_body'  => $request->message_body,
-            'recipients'    => join(',', $request->recipients),
-            'schedule_time' => $request->schedule_time,
+            'recipients'    => join($request->recipients, ','),
+            'schedule_time' => Carbon::parse($request->schedule_time)->toDateTimeString(),
         ]);
 
+
+        //show the review page for the user to confirm sending the message. (cost breakdown, message, avialable credits)
+
+        return redirect()->route('message.confirm' , $request->user()->id)->with('message', $message);
 
     }
 

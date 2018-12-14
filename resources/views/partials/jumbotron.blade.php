@@ -1,5 +1,5 @@
 <div class="row">
-        <div class="col-xs-12">
+        <div class="col-xs-12 mx-auto">
             <div class="jumbotron">
                 <h1>Hi! Olanrewaju</h1>
                 <p class="lead">This is a your dashboard, from here you can compose new greetings, view your scheduled messages, check your transaction history or even update your profile.</p>
@@ -7,7 +7,7 @@
                 <div class="row">
                     <div class="col row">
                         <p class="lead col-xs-12">
-                            <a class="btn btn-light btn-block" href="/" role="button">Compose Greetings!</a>
+                            <a class="btn btn-light btn-block" href="{{ route('messages.create') }}" role="button">Compose Greetings!</a>
                         </p>
                     </div>
                     <div class="col row">

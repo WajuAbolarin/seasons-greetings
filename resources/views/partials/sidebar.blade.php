@@ -3,30 +3,25 @@ avbarColor03">
           <div class="sidebar-sticky">
             <ul class="nav flex-column text-black">
               <li class="nav-item">
-                <a class="nav-link active" href="/">
-                  <span data-feather="home"></span>
-                  Dashboard <span class="sr-only">(current)</span>
+                <a class="nav-link" href="/home">
+                  Dashboard
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="/">
-                  <span data-feather="file"></span>
+                <a class="nav-link" href="{{ route('messages.create') }}">
                   Messages
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="/">
-                  <span data-feather="shopping-cart"></span>
+                <a class="nav-link" href="/home">
                   Guides
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="/">
-                  <span data-feather="shopping-cart"></span>
+                <a class="nav-link" href="/home">
                   Transactions
                 </a>
-                <a class="nav-link" href="/">
-                  <span data-feather="shopping-cart"></span>
+                <a class="nav-link" href="/home">
                   Contacts
                 </a>
               </li>
